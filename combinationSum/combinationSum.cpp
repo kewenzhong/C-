@@ -9,39 +9,43 @@ public:
 
 		auto size = candidates.size() ;
 		// vector<int> ar ;
-		for( auto i=0;i<size;i++ ){
+		for( auto i=0;i<size;i++i++ ){
 
 			vector<int> candidate(candidates.begin()+i,candidates.end()) ;
 			vector<int> ar;
 			int target_ = target ;
 
-            aResult(candidate,target_,ar) ;
-			if( !target_ && ar[0] == candidates[i]){
-				res.push_back(ar) ;
-			}
+            aResult(candidate,target_,ar,res) ;
+			// if( !target_ && ar[0] == candidates[i] ){
+			// 	res.push_back(ar) ;
+			// }
 		}
         return res ;
     }
 
-    vector<int> aResult(vector<int> candidates, int& target,vector<int>& ar){
+    void aResult(vector<int> candidates, int& target,vector<int>& ar,vector<vector<int>>& res){
 
         for( auto i:candidates ){
         	if( target>i ){
         		ar.push_back(i) ;
         		target -= i ;
-        		vector<int> tmp = aResult(candidates,target,ar) ;
+        		// vector<int> tmp = 
+        		aResult(candidates,target,ar) ;
         		if( target ){
         			ar.pop_back() ;
         			target += i ;
         		}
+
         	}
         	else if( target == i ){
         		target -= i ;
         		ar.push_back(i) ;
-        		return ar ;
+        		if( ar[0] == candidates[0] )
+        			res.push_back(ar) ;
+        		// return ar ;
         	}
         }
         
-        return ar ;
+        // return ar ;
     }
 };

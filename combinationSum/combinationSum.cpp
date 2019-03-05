@@ -8,18 +8,10 @@ public:
 		vector<vector<int>> res ;
 
 		auto size = candidates.size() ;
-		// vector<int> ar ;
-		// for( auto i=0;i<size;i++ ){
+        vector<int> ar;
 
-			// vector<int> candidate(candidates.begin()+i,candidates.end()) ;
-			vector<int> ar;
-			int target_ = target ;
-
-            aResult(candidates,0,target_,ar,res) ;
-			// if( !target_ && ar[0] == candidates[i] ){
-			// 	res.push_back(ar) ;
-			// }
-		// }
+        aResult(candidates,0,target,ar,res) ;
+        
         return res ;
     }
 
@@ -35,35 +27,18 @@ public:
         		if( target == 0 ){
         			res.push_back(ar) ;
 
-        			ar.pop_back() ;
-        			target += candidates[i] ;
-
-        			return ;
+//         			ar.pop_back() ;
+//         			target += candidates[i] ;
+                    
+        			// return ;
         		}
-        		// vector<int> tmp = 
+                
         		aResult(candidates,i,target,ar,res) ;
 
-        		// if( target ){
         		ar.pop_back() ;
         		target += candidates[i] ;
-        		// }
-
+        	
         	}
-        	// else if( target == candidates[i] ){
-
-        	// 	target -= candidates[i] ;
-        	// 	ar.push_back(candidates[i]) ;
-
-        	// 	if( ar[0] == candidates[it] ){
-        	// 		res.push_back(ar) ;
-                    
-        	// 	}
-
-        	// 	ar.pop_back() ;
-         //        target += candidates[i] ;
-        		
-        	// 	// return ar ;
-        	// }
         }
         
         // return ar ;

@@ -11,8 +11,8 @@ public:
 			return ;
 		}
 
-		cout<<"left = "<<left<<endl ;
-		cout<<"right = "<<right<<endl ;
+		// cout<<"left = "<<left<<endl ;
+		// cout<<"right = "<<right<<endl ;
 
 		int soldier = vctInt[left] ;
 

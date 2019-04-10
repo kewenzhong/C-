@@ -12,7 +12,7 @@ public:
 		//记录每个单独的解
         vector<int> ar;
 
-        findResult(candidates,0,target,ar,res) ;
+        findResult(candidates,0,target,ar,res) ; 
         
         return res ;
     }
@@ -32,7 +32,7 @@ public:
         	if( target >= candidates[i] ){
 
         		ar.push_back(candidates[i]) ;
-        		target -= candidates[i] 
+        		target -= candidates[i] ;
 
         		if( target == 0 ){
         			res.push_back(ar) ;

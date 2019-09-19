@@ -28,7 +28,7 @@ public:
 		}
 	}
 	int climb( int mountains[600][600],int x,int y ){
-		cout<<x<<" "<<y<<endl ;
+		// cout<<x<<" "<<y<<endl ;
 
 		// for( int i=0;i<10;i++ ){
 		// 	for( int j=0;j<30;j++ ){

@@ -1,42 +1,46 @@
 #include <iostream>
 #include <vector>
+#include <stack>
+#include <algorithm>
 using namespace std ;
 
 class FastSort{
 
 public:
-	void sort( vector<int>& vctInt,int left,int right ){
+	void swap(int& a ,int& b){
+		int tmp  = a ;
+		a = b ;
+		b = tmp ;
+	}
 
-		if( right <= left ){
+	void fastsort(vector<int>& vecInt,int left,int right){
+		if( right<=left ){
 			return ;
 		}
-
-		// cout<<"left = "<<left<<endl ;
-		// cout<<"right = "<<right<<endl ;
-
-		int soldier = vctInt[left] ;
-
 		int l = left ;
 		int r = right ;
 
-		while( r>l ){
-			while( vctInt[r] >= soldier && r>l ){
-				r-- ;
+		int index = (right+left)/2 ;
+		swap(vecInt[index],vecInt[left]) ;
+		int soider = vecInt[left] ;
+
+		while(right>left){
+			while( right>left && vecInt[right]>=soider ){
+				--right ;
 			}
-			vctInt[l] = vctInt[r] ;
+			if(vecInt[right] < soider)
+				vecInt[left++] = vecInt[right] ;
 
-			while( vctInt[l] <= soldier && r>l ){
-				l++ ;
-			}
+			while(right>left && vecInt[left]<=soider ){
+				++left ;
+			} 
+			if(vecInt[left]>soider)
+				vecInt[right--] = vecInt[left] ;
+		} 
+		vecInt[left] = soider ;
 
-			vctInt[r] = vctInt[l] ;
-		}
-
-		vctInt[l] = soldier ;
-
-		sort(vctInt,left,l-1) ;
-		sort(vctInt,l+1,right) ;
-
+		fastsort(vecInt,l,left-1) ;
+		fastsort(vecInt,left+1,r) ;
 	}
 
 } ;
@@ -50,17 +54,18 @@ int main(){
 	cin>>length ;
 
 	int tmp ;
-	for( auto i=0;i<length;i++ ){
+	for( int i=0;i<length;i++ ){
 		cin>>tmp ;
 		vctInt.push_back(tmp) ;
 	}
 
 	FastSort fs ;
-	fs.sort(vctInt,0,length-1) ;
+	fs.fastsort(vctInt,0,length-1) ;
 
 	for( auto i:vctInt ){
 		cout<<i<< " " ;
 	}
+	cout<<endl ;
 
 	return 0 ;
 }

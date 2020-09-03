@@ -7,7 +7,6 @@
 
 int main(){
     //创建套接字
-    
 
     //向服务器（特定的IP和端口）发起请求
     struct sockaddr_in serv_addr;
@@ -35,10 +34,6 @@ int main(){
         //关闭套接字
         close(sock);
     }
-   
-    
-   
-    
 
     return 0;
 }

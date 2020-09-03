@@ -126,6 +126,10 @@ void freeTree(TreeNode* root){
 	delete root  ;
 }
 
+void findSum( TreeNode* root ,int sum ){
+	
+}
+
 int main(){
 	int count ;
 	int e  ;
